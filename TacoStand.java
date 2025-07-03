@@ -2,6 +2,7 @@ public class TacoStand
 {
     /* CONSTANT VARIABLES */
 	public static final String BAR = "----------------------------------------";
+	public static final String CARNE_ASADA_STEAK = "Carne Asada (Steak)";
 
 	/* STATIC VARIABLES */
 	private static int numAsada = 0, numPollo = 0, numLengua = 0, numUltimate = 0;
@@ -22,7 +23,7 @@ public class TacoStand
 	public static void printMenu()
 	{
 		System.out.println("Menu options:\n" + TacoStand.BAR);
-		System.out.printf("%2d. %-21s [$%5.2f]%n", 1, "Carne Asada (Steak)", 2.5);
+		System.out.printf("%2d. %-21s [$%5.2f]%n", 1, CARNE_ASADA_STEAK, 2.5);
 		System.out.printf("%2d. %-21s [$%5.2f]%n", 2, "Pollo Asado (Chicken)", 1.75);
 		System.out.printf("%2d. %-21s [$%5.2f]%n", 3, "Lengua (Beef Tongue)", 3.0);
 		System.out.printf("%2d. %-21s [$%5.2f]%n", 4, "Ultimate Taco", 18.0);
@@ -59,7 +60,8 @@ public class TacoStand
 	{
 		TacoStand.totalFunds += funds;
 	}
-	
+
+
 	/**
 	 * Checks if proposed budget to order supplies can be used to buy more supplies. If within total funds,
 	 * will update total funds and increment number of each option of tacos based on budget. Otherwise,
@@ -71,17 +73,25 @@ public class TacoStand
 	 */
 	public static boolean orderSupplies(double budget)
 	{
-		//tacos cost 75 cents each in supplies, keeping it simple
-	    int tacosEach = (int)(Math.round(budget / 0.75 / 4));
 
-	    TacoStand.totalFunds -= budget;
 
-	    TacoStand.numAsada += tacosEach;
-	    TacoStand.numPollo += tacosEach;
-	    TacoStand.numLengua += tacosEach;
-	    TacoStand.numUltimate += tacosEach;
+		if (budget <= TacoStand.totalFunds) {
+			//tacos cost 75 cents each in supplies, keeping it simple
+	    	int tacosEach = (int)(Math.round(budget / 0.75 / 4));
 
-		return true;  //TODO: this is stubbed, replace this line with your actual code!
+	    	TacoStand.totalFunds -= budget;
+
+	    	TacoStand.numAsada += tacosEach;
+	    	TacoStand.numPollo += tacosEach;
+	    	TacoStand.numLengua += tacosEach;
+	    	TacoStand.numUltimate += tacosEach;
+
+			return true;
+		}
+		
+		else{
+			return false;
+		}
 	}
 
 	/**
