@@ -66,7 +66,7 @@ public class Main
 		option = UtilityBelt.readInt("Enter choice> ", 1, 4);
 		numTacosOrdered = UtilityBelt.readInt("Enter number of tacos you want> ", 1, 50);
 
-		//CALCULATION + OUTPUT SECTION
+		//CALCULATION + OUTPUT SECTIONf
 		TacoStand.updateTotalFunds(option, numTacosOrdered);
 		Main.printConfirmation(numTacosOrdered);
 	}
@@ -78,7 +78,13 @@ public class Main
 	 */
 	public static void printConfirmation(int numTacos) //TODO: upgrade per documentation
 	{
-		System.out.println("Here you go, buen provecho!");
-		System.out.println("🌮");
+		if (1 <= numTacos && numTacos <= 5){
+			System.out.println("Here you go, buen provecho!");
+		for (int i = 1; i <= numTacos; i++){
+			System.out.print("🌮");
+		}
+		System.out.println();
+		System.out.println();
+		}
 	}
 }
